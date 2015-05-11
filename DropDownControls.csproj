@@ -46,26 +46,12 @@
   <ItemGroup>
     <Compile Include="BufferedPaint\BufferedPainter.cs" />
     <Compile Include="BufferedPaint\Interop.cs" />
-    <Compile Include="ComboTreeBox\ComboTreeBox.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="ComboTreeBox\ComboTreeDropDown.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="ComboTreeBox\ComboTreeNode.cs" />
-    <Compile Include="ComboTreeBox\ComboTreeNodeCollection.cs" />
-    <Compile Include="ConvertDataTable.cs" />
-    <Compile Include="DropDownControlBase\DropDownControlBase.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="GroupedComboBox\GroupedComboBoxItem.cs" />
-    <Compile Include="GroupedComboBox\GroupedComboBox.cs">
+    <Compile Include="IEnumerableToDataTable\ConvertDataTable.cs" />
+    <Compile Include="FilteredGroupedComboBox\GroupedComboBoxItem.cs" />
+    <Compile Include="FilteredGroupedComboBox\GroupedComboBox.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="ComboTreeBox\ComboTreeBox.cd" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -1,4 +1,4 @@
-﻿using DropDownControls.GroupedComboBox;
+﻿using DropDownControls.FilteredGroupedComboBox;
 
 namespace DemoApp {
 	partial class DemoForm {
@@ -29,7 +29,7 @@ namespace DemoApp {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DemoForm));
             this.label1 = new System.Windows.Forms.Label();
             this.imageList = new System.Windows.Forms.ImageList(this.components);
-            this.gcbEditable = new DropDownControls.GroupedComboBox.FilteredGroupedComboBox();
+            this.gcbEditable = new FilteredGroupedComboBox();
             this.SuspendLayout();
             // 
             // label1

@@ -5,15 +5,16 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Windows.Forms;
 using System.Windows.Forms.VisualStyles;
 using BufferedPainting;
-using DemoApp;
-using System.Data;
+using DropDownControls.IEnumerableToDataTable;
 
-namespace DropDownControls.GroupedComboBox
+namespace DropDownControls.FilteredGroupedComboBox
 {
     /// <summary>
     /// Represents a Windows combo box control that, when bound to a data source, is capable of 
@@ -349,6 +350,7 @@ namespace DropDownControls.GroupedComboBox
                 else if (!comboBoxEdit) {
                     // use the default background-painting logic
                     e.DrawBackground();
+                    
                 }
 
                 // render group header text
@@ -366,8 +368,8 @@ namespace DropDownControls.GroupedComboBox
                     e.Graphics, 
                     GetItemText(Items[e.Index]), 
                     Font, 
-                    itemBounds, 
-                    textColor, 
+                    itemBounds,
+                    textColor, GetBackcolor(Items[e.Index]),
                     _textFormatFlags
                     );
 
@@ -383,6 +385,19 @@ namespace DropDownControls.GroupedComboBox
                     }
                 }
             }
+        }
+
+        private Color GetBackcolor(object itemArray)
+        {
+            try
+            {
+                return (Color)((DataRowView)(itemArray)).Row.ItemArray[3];
+            }
+            catch (Exception)
+            {
+                return Color.White;
+            }
+      
         }
 
         /// <summary>
@@ -540,7 +555,7 @@ namespace DropDownControls.GroupedComboBox
         /// </summary>
         /// <param name="items">IEnumerable<GroupedComboBoxItem></param>
         /// <exception cref="NotImplementedException"></exception>
-        public void FilterableGroupableDataSource(IEnumerable<GroupedComboBoxItem> items)
+        public void FilterableGroupableDataSource(IEnumerable<GroupedColoredComboBoxItem> items)
         {
             items = AppendBlankItem(items);
             ValueMember = "Value";
@@ -553,10 +568,10 @@ namespace DropDownControls.GroupedComboBox
             DataSource = new BindingSource(DataView, String.Empty);
         }
 
-        private static IEnumerable<GroupedComboBoxItem> AppendBlankItem(IEnumerable<GroupedComboBoxItem> items)
+        private static IEnumerable<GroupedColoredComboBoxItem> AppendBlankItem(IEnumerable<GroupedColoredComboBoxItem> items)
         {
             var itemList = items.ToList();
-            itemList.Add(new GroupedComboBoxItem{Group = "", Value = 99, Display = ""});
+            itemList.Add(new GroupedColoredComboBoxItem{Group = "", Value = int.MinValue.ToString(CultureInfo.InvariantCulture), Display = ""});
             return itemList;
         }
              

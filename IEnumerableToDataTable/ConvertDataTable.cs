@@ -4,8 +4,10 @@ using System.Data;
 using System.Linq;
 using System.Reflection;
 
-namespace DemoApp
+namespace DropDownControls.IEnumerableToDataTable
 {
+    //Excerpted from http://weblogs.asp.net/stevesloka/linq-to-datatable
+
     /// <summary>
     /// Convert IEnumerable to DataTable
     /// </summary>
