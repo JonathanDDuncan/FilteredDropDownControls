@@ -522,7 +522,7 @@ namespace DropDownControls.FilteredGroupedComboBox
             if (SelectedItem == null)
             {
                 //Filter by text but keep one comboxbox tries to set index to 0
-                DataView.RowFilter = "[Display] like '%" + previoustext + "%' OR [Value]= 99 ";
+                DataView.RowFilter = "Convert(Display, 'System.String') like '%" + previoustext + "%' OR  Convert(Value, 'System.String')= Convert(99, 'System.String') ";
                
             }
             else DataView.RowFilter = "1=1"; //reset filter
